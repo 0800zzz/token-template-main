@@ -1,93 +1,56 @@
-  :root {
-    --hacker-green: #00ff88;
-    --matrix-green: #00ff41;
-    --terminal-bg: #0a0a0a;
-    --glow-effect: 0 0 10px rgba(0, 255, 100, 0.3);
+/* cyberpunk.css */
+:root {
+  --primary: #00ff88;
+  --secondary: #ff00ff;
+  --accent: #00ffff;
+  --bg: #0a0a0a;
+  --text: #e0e0e0;
+  --card-bg: rgba(10, 10, 10, 0.8);
+  --border: 1px solid var(--primary);
+  --glow: 0 0 10px rgba(0, 255, 136, 0.5);
+}
+
+
+  /* Asegurar que Matrix esté detrás de todo */
+  #matrix-background {
+    pointer-events: none; /* Permite hacer clic a través de él */
   }
-
-  /* Estructura principal */
-  body {
-    background-color: #111;
-    color: #e0e0e0;
-    font-family: 'Fira Code', monospace;
-    line-height: 1.6;
-  }
-
-  /* Efecto de terminal */
-  .blog-container {
-    background: var(--terminal-bg);
-    border: 1px solid var(--hacker-green);
-    box-shadow: var(--glow-effect);
-  }
-
-  /* Títulos estilo terminal */
-  h1, h2, h3 {
-    color: var(--hacker-green);
-    text-shadow: 0 0 5px rgba(0, 255, 100, 0.5);
-    border-bottom: 1px dashed var(--hacker-green);
-    padding-bottom: 0.3em;
-  }
-
-  /* Bloques de código */
-  pre {
-    background: #000 !important;
-    border: 1px solid var(--matrix-green);
-    border-left: 3px solid var(--hacker-green);
-  }
-
-  /* Tablas estilo Wireshark */
-  table {
-    border: 1px solid #333;
-    background: #0d0d0d;
-  }
-
-  th {
-    background: #1a1a1a;
-    color: var(--hacker-green);
-  }
-
-  td {
-    border-top: 1px solid #333;
-  }
-
-  /* Efecto de cursor parpadeante */
-  .header-title::after {
-    content: "█";
-    animation: blink 1s infinite;
-  }
-
-  @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-  } 
-
-  .code-block {
+  
+  /* Terminal siempre interactiva */
+  .terminal-container {
     position: relative;
+    z-index: 20;
+    min-height: 300px;
   }
-  .code-block::before {
-    content: "$";
-    position: absolute;
-    left: -25px;
-    color: var(--hacker-green);
-  }
+  
+  
+body {
+  background-color: var(--bg);
+  background-image: 
+    linear-gradient(rgba(0, 255, 136, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 136, 0.03) 1px, transparent 1px);
+  background-size: 20px 20px;
+  color: var(--text);
+  font-family: 'Courier New', monospace;
+}
 
+/* Efectos específicos */
+.glow-effect {
+  box-shadow: var(--glow);
+}
 
-  @keyframes scanline {
-    0% { transform: translateY(-100%); }
-    100% { transform: translateY(100%); }
-  }
-  .scanline-effect::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      to bottom,
-      transparent 0%,
-      rgba(0, 255, 100, 0.1) 50%,
-      transparent 100%
-    );
-    animation: scanline 5s linear infinite;
-  }
+.scanline::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 255, 100, 0.1) 50%,
+    transparent 100%
+  );
+  animation: scanline 8s linear infinite;
+}
